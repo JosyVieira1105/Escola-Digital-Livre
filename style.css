@@ -75,3 +75,90 @@ bory {
     font-weight: 400;
     color: var(--color-text-light);
 }
+
+/* NAVEGAÇÃO (Menu) */
+
+.main-nav {
+    display: flex;
+    align-items: center; /* Centraliza os links verticalmente */
+    gap: 32px; /* Espaço entre os links */
+}
+
+.nav-link {
+    text-decoration: none; /* Remove a estabilização padrão dos links */
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text);
+    transition: color 0.2s ease; /* Muda a cor suavemente */
+}
+
+.nav-link:hover {
+    color: var(--color-text) /* Muda de cor ao passar o mouse */
+
+}
+
+.nav-link.active {
+    color: var(--color-primary); /* Destaca o link da página atual */
+    font-weight: 600;
+
+}
+
+/*AÇÕES HEADER (Busca + botão */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.search-box {
+    position: relative; /* serve para posicionar o icone da lupa */
+    display: flex;
+    align-items: center;
+
+}
+
+.search-box input {
+    font-family: var(--font-main);
+    width: 220px;
+    padding: 10px 40px 10px 16px; /* Espaço extra a direita para caber o icone */
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none; /* Remove a borda azul padão do navegador */
+
+}
+
+.search-box input:focus{
+    border-color: var(--color-primary);
+    
+}
+
+.search-box input::placeholder {
+    color: var(--color-text-light);
+
+}
+
+.search-icon {
+    position: absolute; /* Posiciona o icone sobre o input */
+    right: 14px;
+    fill: var(--color-text-light); /* Cor do icone SVG */
+    pointer-events: none; /* Impede o icone de atrapalhar o clique no input */
+    width: 25px; /* Tamanho do icone de pesquisa */
+}
+
+.btn-primary {
+    font-family: var(--font-main);
+    background-color: var(--color-primary);
+    color: #FFF;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer; /* Mostra que é clicavel */
+    white-space: nowrap; /* Impede o texto do botão de qualquer linha */
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+}
