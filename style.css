@@ -1,207 +1,265 @@
-/* Variáveis Globais (cores e fontes reutilizadas no CSS */
 
+/* Variáveis de cores e fonte */
 :root {
-    --color-primary: #4F46E5;  /* cor principal */
-    --color-primary-dark: #4339CA; /* versão escura */
-    --color-text: #1E1B2E; /* cor do texto principal */
-    --color-text-light: #6B7280; /* cor do texto segundario */
-    --color-border: #E5E7EB; /* cor da borda */
-    --color-bg: #FFF; /* cor de fundo */
-    --font-main:'Inter', sans-serif; /* fonte */
-
+    --color-primary: #1748D1;
+    --color-primary-dark: #1038A8;
+    --color-text: #242B3A;
+    --color-text-light: #777E8C;
+    --color-border: #E5E7EB;
+    --color-bg: #FFFFFF;
+    --font-main: 'Inter', sans-serif;
 }
 
-/* Reset básico: remove espaçamentos padrões do navegador */
+/* Reset geral */
 * {
-    margin: 0; /* Espaçamento externo */
-    padding: 0; /* Espaçamento interno */
-    box-sizing: border-box; /* padding e border não aumentam o tamanho do elemento */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-bory {
-    font-family: var(--font-main); /* Tipo de fonte */
-
+body {
+    font-family: var(--font-main);
+    color: var(--color-text);
+    background: var(--color-bg);
 }
 
+/* Cabeçalho */
 .header {
-    width: 100;
-    background-color: var(--color-bg);
-    border-bottom: 1px solid var(--color-border); /* Borda inferior */
-    position: sticky; /* header "gruda" no topo ao rola a página */
-    top: 0;
-    z-index: 100; /*garante que fique acima dos outros elementos*/
+    width: 100%;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
 }
 
 .header-container {
-    max-width: 1200px; /* Largura máxima do conteúdo */
-    margin: 0 auto; /* Centraliza na página */
-    padding: 16px 24px;
-    display: flex; /* Organiza os elementos lado lado */
-    align-items: center; /* Centraliza verticalmente */
-    justify-content: space-between; /* Logo, menu e botões ficam nas pontas */
-    gap: 24px; /* Espaço entre os elementos */
-
+    width: 100%;
+    min-height: 120px;
+    padding: 20px 3%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 28px;
 }
 
-/* LOGO */
-
+/* Logo e identificação da VIPCELL */
 .logo {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
     text-decoration: none;
-
+    flex-shrink: 0;
 }
 
 .logo img {
-    width: 40px;
-    object-fit: contain; /* Mantém a proporção da image, */
+    width: 190px;
+    height: auto;
+    object-fit: contain;
 }
+
 .logo-text {
     display: flex;
-    flex-direction: column; /* Título em cima< subtítulo embaixo */
-
+    flex-direction: column;
+    gap: 5px;
 }
 
 .logo-title {
-    font-size: 16px;
-    font-weight: 700; /* Negrito */
-    color: var(--color-text);
-
+    color: var(--color-primary);
+    font-size: 21px;
+    font-weight: 700;
+    text-decoration: underline;
 }
 
 .logo-subtitle {
-    font-size: 12px;
-    font-weight: 400;
     color: var(--color-text-light);
+    font-size: 11px;
 }
 
-/* NAVEGAÇÃO (Menu) */
-
+/* Menu de navegação */
 .main-nav {
     display: flex;
-    align-items: center; /* Centraliza os links verticalmente */
-    gap: 32px; /* Espaço entre os links */
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
 }
 
 .nav-link {
-    text-decoration: none; /* Remove a estabilização padrão dos links */
+    color: #626977;
+    text-decoration: none;
     font-size: 14px;
     font-weight: 500;
-    color: var(--color-text);
-    transition: color 0.2s ease; /* Muda a cor suavemente */
+    transition: color 0.3s ease;
 }
 
-.nav-link:hover {
-    color: var(--color-text) /* Muda de cor ao passar o mouse */
-
+.nav-link:hover,
+.nav-link:focus-visible {
+    color: var(--color-primary);
 }
 
 .nav-link.active {
-    color: var(--color-primary); /* Destaca o link da página atual */
-    font-weight: 600;
-
+    color: var(--color-primary);
+    font-weight: 700;
 }
 
-/*AÇÕES HEADER (Busca + botão */
+/* Área de busca e botão */
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
 }
 
+/* Campo de busca */
 .search-box {
-    position: relative; /* serve para posicionar o icone da lupa */
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.search-box label {
+    font-size: 11px;
+    color: var(--color-text-light);
+}
+
+.search-input {
     display: flex;
     align-items: center;
-
-}
-
-.search-box input {
-    font-family: var(--font-main);
-    width: 220px;
-    padding: 10px 40px 10px 16px; /* Espaço extra a direita para caber o icone */
+    width: 190px;
     border: 1px solid var(--color-border);
-    border-radius: 8px;
-    font-size: 14px;
-    outline: none; /* Remove a borda azul padão do navegador */
-
+    border-radius: 6px;
+    overflow: hidden;
 }
 
-.search-box input:focus{
-    border-color: var(--color-primary);
-    
-}
-
-.search-box input::placeholder {
-    color: var(--color-text-light);
-
-}
-
-.search-icon {
-    position: absolute; /* Posiciona o icone sobre o input */
-    right: 14px;
-    fill: var(--color-text-light); /* Cor do icone SVG */
-    pointer-events: none; /* Impede o icone de atrapalhar o clique no input */
-    width: 25px; /* Tamanho do icone de pesquisa */
-}
-
-.btn-primary {
-    font-family: var(--font-main);
-    background-color: var(--color-primary);
-    color: #FFF;
+.search-input input {
+    width: 100%;
+    min-width: 0;
+    padding: 10px;
     border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 14px;
+    outline: none;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.search-input:focus-within {
+    border-color: var(--color-primary);
+}
+
+.search-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    border: none;
+    background: white;
+    color: var(--color-primary);
+    cursor: pointer;
+}
+
+/* Botão Comprar agora */
+.cta-button {
+    padding: 14px 20px;
+    border-radius: 9px;
+    background: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
     font-weight: 600;
-    cursor: pointer; /* Mostra que é clicavel */
-    white-space: nowrap; /* Impede o texto do botão de qualquer linha */
+    white-space: nowrap;
+    transition: background 0.3s ease;
 }
 
-.btn-primary:hover {
-    background-color: var(--color-primary-dark);
-
+.cta-button:hover,
+.cta-button:focus-visible {
+    background: var(--color-primary-dark);
 }
 
-/* Botão do menu hambúrguer */
+/* Botão do menu para celulares */
 .hamburguer {
     display: none;
-    font-size: 24px;
-    background: none;
     border: none;
+    background: transparent;
+    color: var(--color-primary);
+    font-size: 28px;
     cursor: pointer;
-    color: var(--color-text);
 }
 
-/* Telas pequenas (celulares) */
-@media (max-width: 768px) {
-    .search-box {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
+/* Conteúdo da página */
+.main-content {
+    padding: 40px 5%;
+}
 
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: var(--color-bg);
-        border-bottom:  1px solid var(--color-border);
-        padding: 16px 24px;
-        gap: 16px;
+.section {
+    padding: 25px 0;
+}
+
+.section h1,
+.section h2 {
+    margin-bottom: 12px;
+}
+
+.section p {
+    color: var(--color-text-light);
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 1100px) {
+    .header-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .logo {
+        margin-right: auto;
+    }
+
+    .hamburguer {
+        display: block;
     }
 
     .main-nav {
-        display:none;
-    }
-
-    .btn-primary{
         display: none;
-
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px 0;
     }
- 
-    .hamburguer {
-        display: block;
-    } 
 
+    .main-nav.menu-aberto {
+        display: flex;
+    }
+
+    .header-actions {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .header-container {
+        padding: 18px;
+        gap: 20px;
+    }
+
+    .logo img {
+        width: 125px;
+    }
+
+    .logo-title {
+        font-size: 17px;
+    }
+
+    .logo-subtitle {
+        font-size: 10px;
+    }
+
+    .header-actions {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .search-box {
+        flex: 1;
+        min-width: 150px;
+    }
+
+    .search-input {
+        width: 100%;
+    }
 }
